@@ -54,7 +54,7 @@ PCAdrivers(
 
 | Source | What to pass |
 |---|---|
-| `stats::prcomp` | `pca$x` or a column subset, e.g. `pca$x[, 1:10]` |
+| `stats::prcomp` | `pca$x` or a column subset, e.g. `pca$x[, 1:5]` |
 | `PCAtools::pca` | `p$rotated` |
 | Any other tool | Any numeric matrix with samples as rows and PCs as columns |
 
@@ -66,7 +66,7 @@ set to `PC1`, `PC2`, …
 ### Example 1 — basic usage with `prcomp`
 
 ```r
-source("PCAdrivers.R")
+source("https://raw.githubusercontent.com/elisabettasciacca/PCAdrivers/main/PCAdrivers.R")
 
 set.seed(42)
 expr <- matrix(rnorm(200 * 500), nrow = 200, ncol = 500)
@@ -81,7 +81,7 @@ clinical <- data.frame(
 
 pca <- prcomp(expr, center = TRUE, scale. = FALSE)
 
-PCAdrivers(scores = pca$x[, 1:10], vars = clinical)
+PCAdrivers(scores = pca$x[, 1:5], vars = clinical)
 ```
 
 ### Example 2 — non-parametric tests, p value adjustment, and returning data
@@ -92,7 +92,7 @@ plot metadata, so you can do further downstream work.
 
 ```r
 res <- PCAdrivers(
-  scores      = pca$x[, 1:10],
+  scores      = pca$x[, 1:5],
   vars        = clinical,
   parametric  = FALSE,   # Spearman + Kruskal-Wallis
   p_adj       = "BH",    # Benjamini-Hochberg correction
@@ -175,8 +175,8 @@ Before testing, the following columns are automatically dropped from `vars`:
 ## Related packages
 
 This script is the standalone equivalent of the
-[dsPCAdrivers](https://github.com/YOUR_USERNAME/dsPCAdrivers) +
-[dsPCAdriversClient](https://github.com/YOUR_USERNAME/dsPCAdriversClient)
+[dsPCAdrivers](https://github.com/elisabettasciacca/dsPCAdrivers) +
+[dsPCAdriversClient](https://github.com/elisabettasciacca/dsPCAdriversClient)
 package pair, which implements the same analysis in a federated
 [DataSHIELD](https://www.datashield.org/) setting.
 
