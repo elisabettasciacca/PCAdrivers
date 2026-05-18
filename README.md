@@ -46,8 +46,7 @@ PCAdrivers(
   transpose_plot       = FALSE,
   drop_insignificant_x = FALSE,
   drop_insignificant_y = FALSE,
-  return_data          = FALSE,
-  verbose              = FALSE
+  return_data          = FALSE
 )
 ```
 
@@ -152,7 +151,6 @@ PCAdrivers(
 | `drop_insignificant_x` | logical | `FALSE` | Drop PCs with no significant associations |
 | `drop_insignificant_y` | logical | `FALSE` | Drop variables with no significant associations |
 | `return_data` | logical | `FALSE` | Return results list instead of printing the plot |
-| `verbose` | logical | `FALSE` | Print progress messages |
 
 ## Output
 
